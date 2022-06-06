@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ProductContext } from '../Home';
 import './Gallery.css'
 
-const Gallery = ({ product }) => {
+const Gallery = () => {
+    const product = useContext(ProductContext);
     return (
         <div>
             {product?.gallery && (product?.gallery || []).map((img, i) =>

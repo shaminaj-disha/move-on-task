@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import Gallery from './Gallery/Gallery';
 import Products from './Products';
+
+export const ProductContext = createContext('');
 
 const Home = () => {
     const [products, setProducts] = useState(null);
@@ -10,25 +12,29 @@ const Home = () => {
             .then(data => setProducts(data));
     }, []);
     // console.log(products);
-    const productsArray = [products];
+    // const productsArray = [products];
     // console.log(productsArray);
-    if(!products) {
+    if (!products) {
         return <div>Loading</div>
     }
     return (
-        <div className='d-flex'>
-            <div className='bg-success'>
-                <h2>Image Gallery</h2>
-                {productsArray && (productsArray || [])?.map((product, i) => <Gallery key={i} product={product} />)}
-                {/* <div className="clearfix"></div> */}
-            </div>
-            <div>
-                {productsArray && (productsArray || [])?.map((product, i) => <Products key={i} product={product} />)}
-            </div>
-            {/* <div>
+        <ProductContext.Provider value={products}>
+            <div className='d-flex'>
+                <div className='bg-success'>
+                    <h2>Image Gallery</h2>
+                    {/* {productsArray && (productsArray || [])?.map((product, i) => <Gallery key={i} product={product} />)} */}
+                    {/* <div className="clearfix"></div> */}
+                    <Gallery></Gallery>
+                </div>
+                <div>
+                    {/* {productsArray && (productsArray || [])?.map((product, i) => <Products key={i} product={product} />)} */}
+                    <Products></Products>
+                </div>
+                {/* <div>
                 {<Products product={products}></Products>}
             </div> */}
-        </div>
+            </div>
+        </ProductContext.Provider>
     );
 };
 
