@@ -1,0 +1,13 @@
+/* * {
+    box-sizing: border-box;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-gap: 10px;
+} */
+
+body {
+    background-color: lightgray;
+}

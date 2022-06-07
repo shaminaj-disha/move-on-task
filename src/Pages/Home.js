@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import Gallery from './Gallery/Gallery';
 import Products from './Products';
+import './Home.css';
 
 export const ProductContext = createContext('');
 
@@ -19,9 +20,9 @@ const Home = () => {
     }
     return (
         <ProductContext.Provider value={products}>
-            <div className='d-flex'>
+            <div className='container row row-cols-1 row-cols-md-2 mx-auto gy-4'>
                 <div className='bg-success'>
-                    <h2>Image Gallery</h2>
+                    <h2 className='text-white text-center my-2'>Image Gallery</h2>
                     {/* {productsArray && (productsArray || [])?.map((product, i) => <Gallery key={i} product={product} />)} */}
                     {/* <div className="clearfix"></div> */}
                     <Gallery></Gallery>
