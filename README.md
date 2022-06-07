@@ -1,6 +1,6 @@
 # Move On Task
 
-[Live Server Link](https://rococo-fairy-031db5.netlify.app/).
+[Live Server Link](https://rococo-fairy-031db5.netlify.app/)
 
 ## Project Description
 
