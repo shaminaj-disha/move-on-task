@@ -17,6 +17,7 @@ const Home = () => {
             .then(data => setProducts(data));
     }, []);
 
+    // will show spinner if products not loaded
     if (!products) {
         return <Loading />
     }
