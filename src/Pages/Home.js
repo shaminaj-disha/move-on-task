@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import Gallery from './Gallery/Gallery';
 import Products from './Products';
 import './Home.css';
+import Loading from './Loading';
 
 export const ProductContext = createContext('');
 
@@ -16,7 +17,7 @@ const Home = () => {
     // const productsArray = [products];
     // console.log(productsArray);
     if (!products) {
-        return <div>Loading</div>
+        return <Loading />
     }
     return (
         <ProductContext.Provider value={products}>
