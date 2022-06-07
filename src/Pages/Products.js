@@ -41,6 +41,8 @@ const Products = () => {
     // console.log(shoeColorId,shoeSizeId);
     const shoeSkus = (product?.variation?.skus).find(prop => (prop.props[0] === colorId) && (prop.props[1] === sizeId));
     // console.log(shoeSkus);
+    const shoePic = (product?.variation?.props[0].values).find(value => value.id === shoeSkus?.props[0]);
+    console.log(shoePic);
 
     const shoeColorTitle = (product?.variation?.props[0].values).find(value => value.title === colorTitle);
     const shoeSizeTitle = (product?.variation?.props[1].values).find(value => value.title === sizeTitle);
@@ -85,25 +87,31 @@ const Products = () => {
                         color.map((shoe, index) => <div><img className='me-2' style={{
                             borderColor: colorId === shoe.id ? 'GoldenRod' : 'LightGrey',
                             borderStyle: colorId === shoe.id ? 'solid' : 'solid'
-                          }} onClick={() => selectColor(shoe.id, shoe.title)} key={index} src={shoe.thumb} alt="" /></div>)
+                        }} onClick={() => selectColor(shoe.id, shoe.title)} key={index} src={shoe.thumb} alt="" /></div>)
                     }
                 </div>
             </div>
             <div className='bg-light p-3 mt-4'>
                 <h4 className='bg-secondary text-white px-2 mb-3'>Select a size</h4>
                 <div>{shoeSizeTitle && <h5><span className='text-secondary'>{product?.variation?.props[1]?.name}</span>: {shoeSizeTitle?.title}</h5>}</div>
-                <div className='row row-cols-2 row-cols-md-4 gy-2'>
+                <div className='row row-cols-2 row-cols-lg-4 gy-2'>
                     {
                         size.map((shoe, index) =>
                             <div onClick={() => selectSize(shoe.id, shoe.title)} key={index} className='col'><p style={{
                                 borderColor: sizeId === shoe.id ? 'GoldenRod' : 'LightGrey',
                                 borderStyle: sizeId === shoe.id ? 'solid' : 'solid',
                                 width: "100px"
-                              }}
-                             className='bg-light text-center'>{shoe.title}</p></div>)
+                            }}
+                                className='bg-light text-center'>{shoe.title}</p></div>)
                     }
                 </div>
             </div>
+            {
+                (shoeSkus?.props[0] === colorId) &&
+                <div className='bg-light p-3 mt-4 d-flex justify-content-center align-items-center'>
+                    <img height="300px" src={shoePic.image} alt="" />
+                </div>
+            }
         </div>
     );
 };
